@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const path = require("path"); // Import path module
+const path = require("path");
 
 const hospitalRoutes = require("./routes/hospitals");
+const specialtyRoutes = require("./routes/specialtys");
+const servicesRoutes = require("./routes/services");
+const bookingRoutes = require("./routes/booking"); // Thêm route booking
 
 const app = express();
 
@@ -16,6 +19,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Routes
 app.use("/api/hospitals", hospitalRoutes);
+app.use("/api/specialtys", specialtyRoutes);
+app.use("/api/services", servicesRoutes);
+app.use("/api/bookings", bookingRoutes); // Sử dụng route booking
 
 // Start server
 const PORT = process.env.PORT || 5000;
